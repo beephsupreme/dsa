@@ -1,2 +1,2 @@
 #!/bin/sh
-./build/app/app-name
+./build/app/app
