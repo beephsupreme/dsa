@@ -79,3 +79,13 @@ int power(int m, int n) {
   }
   return power(m, n - 1) * m;
 }
+double taylor(int x, int n) {
+  static double p{1.0}, f{1.0};
+  if (n == 0) {
+    return 1;
+  }
+  double r = taylor(x, n - 1);
+  p *= x;
+  f *= n;
+  return r + p / f;
+}

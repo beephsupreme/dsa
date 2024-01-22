@@ -12,3 +12,4 @@ int nested_fun(int n);
 int sum_of_n(int n);
 int factorial(int n);
 int power(int m, int n);
+double taylor(int x, int n);

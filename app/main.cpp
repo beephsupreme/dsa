@@ -4,8 +4,8 @@
 using namespace std;
 
 int main() {
-  cout << "\npower by recursion" << endl;
-  cout << power(4, 4) << endl;
+  cout << "\ntaylor by recursion" << endl;
+  cout << taylor(4, 20) << endl;
   cout << endl;
   return 0;
 }
