@@ -123,3 +123,10 @@ int fibonacci(int n) {
     return MEMO[n - 2] + MEMO[n - 1];
   }
 }
+
+int ncr(int n, int r) {
+  if (n == r || r == 0) {
+    return 1;
+  }
+  return ncr(n - 1, r - 1) + ncr(n - 1, r);
+}

@@ -4,8 +4,8 @@
 using namespace std;
 
 int main() {
-  cout << "\nfibonacci by recursion with memoization" << endl;
-  cout << fibonacci(14) << endl;
+  cout << "\nnCr by recursion" << endl;
+  cout << ncr(4, 2) << endl;
   cout << endl;
   return 0;
 }

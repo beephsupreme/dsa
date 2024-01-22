@@ -14,5 +14,5 @@ int factorial(int n);
 int power(int m, int n);
 double taylor(int x, int n);
 double horner(int x, int n);
-void init_memo();
 int fibonacci(int n);
+int ncr(int n, int r);
