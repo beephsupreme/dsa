@@ -4,8 +4,7 @@
 using namespace std;
 
 int main() {
-  cout << "\nnCr by recursion" << endl;
-  cout << ncr(4, 2) << endl;
-  cout << endl;
+  cout << "\ntower of hanoi" << endl;
+  tower(3, 1, 2, 3);
   return 0;
 }

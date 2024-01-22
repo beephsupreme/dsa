@@ -16,3 +16,4 @@ double taylor(int x, int n);
 double horner(int x, int n);
 int fibonacci(int n);
 int ncr(int n, int r);
+void tower(int n, int A, int B, int C);
