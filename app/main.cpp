@@ -4,8 +4,8 @@
 using namespace std;
 
 int main() {
-  cout << "\nhorner by recursion" << endl;
-  cout << horner(3, 10) << endl;
+  cout << "\nfibonacci by recursion with memoization" << endl;
+  cout << fibonacci(14) << endl;
   cout << endl;
   return 0;
 }

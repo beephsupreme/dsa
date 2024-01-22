@@ -98,3 +98,28 @@ double horner(int x, int n) {
   s = 1 + x * s / n;
   return horner(x, n - 1);
 }
+
+int fibonacci(int n) {
+  static int MEMO[100];
+  static bool m = false;
+
+  if (!m) {
+    for (int i = 0; i < 100; i++) {
+      MEMO[i] = -1;
+    }
+    m = true;
+  }
+
+  if (n < 2) {
+    MEMO[n] = n;
+    return n;
+  } else {
+    if (MEMO[n - 2] == -1) {
+      MEMO[n - 2] = fibonacci(n - 2);
+    }
+    if (MEMO[n - 1] == -1) {
+      MEMO[n - 1] = fibonacci(n - 1);
+    }
+    return MEMO[n - 2] + MEMO[n - 1];
+  }
+}
