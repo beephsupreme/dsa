@@ -89,3 +89,12 @@ double taylor(int x, int n) {
   f *= n;
   return r + p / f;
 }
+
+double horner(int x, int n) {
+  static double s{1.0};
+  if (n == 0) {
+    return s;
+  }
+  s = 1 + x * s / n;
+  return horner(x, n - 1);
+}

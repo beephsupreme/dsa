@@ -4,8 +4,8 @@
 using namespace std;
 
 int main() {
-  cout << "\ntaylor by recursion" << endl;
-  cout << taylor(4, 20) << endl;
+  cout << "\nhorner by recursion" << endl;
+  cout << horner(3, 10) << endl;
   cout << endl;
   return 0;
 }

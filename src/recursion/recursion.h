@@ -13,3 +13,4 @@ int sum_of_n(int n);
 int factorial(int n);
 int power(int m, int n);
 double taylor(int x, int n);
+double horner(int x, int n);
