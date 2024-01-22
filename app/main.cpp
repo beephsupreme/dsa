@@ -1,12 +1,11 @@
 #include <iostream>
 
-#include "sections.h"
+#include "arrays.h"
 
 
 using namespace std;
 
 int main() {
-  template_classes();
-  structures_as_parameters();
+  increase_array_size();
   return 0;
 }
