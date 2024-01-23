@@ -49,17 +49,25 @@ void Array::resize() {
   std::cout << "resize()" << std::endl;
 }
 
+int Array::getSize(){
+  return this->size;
+}
+
+int Array::getLength() {
+  return this->length;
+}
+
 void array_driver() {
   Array arr(3);
-  std::cout << "Array size: " << arr.size << std::endl;
-  std::cout << "Array length: " << arr.length << std::endl;
+  std::cout << "Array size: " << arr.getSize() << std::endl;
+  std::cout << "Array length: " << arr.getLength() << std::endl;
   arr.display();
   arr.insert(2);
   arr.insert(4);
   arr.insert(6);
   arr.display();
   arr.insert(8);
-  std::cout << "Array size: " << arr.size << std::endl;
-  std::cout << "Array length: " << arr.length << std::endl;
+  std::cout << "Array size: " << arr.getSize() << std::endl;
+  std::cout << "Array length: " << arr.getLength() << std::endl;
   arr.display();
 }
