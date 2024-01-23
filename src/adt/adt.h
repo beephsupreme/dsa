@@ -5,9 +5,10 @@ class Array {
     Array(int size);
     ~Array();
     void display();
-    void insert(int element);
+    void append(int element);
     int getSize();
     int getLength();
+    void insert(int element, int index);
 
   private:
     int size;

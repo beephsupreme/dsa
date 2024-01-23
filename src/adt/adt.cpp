@@ -19,7 +19,7 @@ Array::~Array() {
 void Array::display() {
   std::cout << "display(): ";
   if (this->length == 0) {
-    std::cout << "Array is enpty!" << std::endl;
+    std::cout << "Array is empty!" << std::endl;
   } else {
     for (int i = 0; i < this->length; i++) {
       std::cout << this->A[i] << " ";
@@ -28,13 +28,13 @@ void Array::display() {
   }
 }
 
-void Array::insert(int element) {
+void Array::append(int element) {
   if (this->size == this->length) {
     this->resize();
   }
-  std::cout << "insert()" << std::endl;
   this->A[length] = element;
   this->length++;
+  std::cout << "append()" << std::endl;
 }
 
 void Array::resize() {
@@ -49,12 +49,28 @@ void Array::resize() {
   std::cout << "resize()" << std::endl;
 }
 
-int Array::getSize(){
-  return this->size;
-}
+int Array::getSize() { return this->size; }
 
-int Array::getLength() {
-  return this->length;
+int Array::getLength() { return this->length; }
+
+void Array::insert(int element, int index) {
+  if (this->size == this->length) {
+    this->resize();
+  }
+  int* q = new int[size];
+  for (int i = 0, r = 0; i < length; i++, r++) {
+    if (r == index - 1) {
+      q[r] = element;
+      i--;
+    } else {
+      q[r] = A[i];
+    }
+  }
+  this->length++;
+  delete [] A;
+  A = q;
+  q = nullptr;
+  std::cout << "insert()" << std::endl;
 }
 
 void array_driver() {
@@ -62,11 +78,22 @@ void array_driver() {
   std::cout << "Array size: " << arr.getSize() << std::endl;
   std::cout << "Array length: " << arr.getLength() << std::endl;
   arr.display();
-  arr.insert(2);
-  arr.insert(4);
-  arr.insert(6);
+  arr.append(2);
+  arr.append(4);
+  arr.insert(42, 2);
   arr.display();
-  arr.insert(8);
+  arr.insert(19, 2);
+  arr.append(6);
+  arr.display();
+  arr.append(8);
+  std::cout << "Array size: " << arr.getSize() << std::endl;
+  std::cout << "Array length: " << arr.getLength() << std::endl;
+  arr.display();
+  arr.insert(13, 6);
+  std::cout << "Array size: " << arr.getSize() << std::endl;
+  std::cout << "Array length: " << arr.getLength() << std::endl;
+  arr.display();
+  arr.insert(1, 1);
   std::cout << "Array size: " << arr.getSize() << std::endl;
   std::cout << "Array length: " << arr.getLength() << std::endl;
   arr.display();
