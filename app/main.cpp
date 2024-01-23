@@ -5,6 +5,6 @@
 using namespace std;
 
 int main() {
-  testes();
+  array_driver();
   return 0;
 }

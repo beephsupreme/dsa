@@ -143,6 +143,3 @@ ipch/
 
 # Visual Studio Trace Files
 *.e2e
-
-# Mac Stuff
-*DS_Store
