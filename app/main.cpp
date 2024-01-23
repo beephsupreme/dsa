@@ -1,11 +1,10 @@
 #include <iostream>
 
-#include "arrays.h"
-
+#include "adt.h"
 
 using namespace std;
 
 int main() {
-  increase_array_size();
+  testes();
   return 0;
 }
