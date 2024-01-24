@@ -11,9 +11,7 @@ Array::Array(int size) {
   this->length = 0;
 }
 
-Array::~Array() {
-  delete[] A;
-}
+Array::~Array() { delete[] A; }
 
 void Array::display() {
   if (this->length == 0) {
@@ -63,14 +61,14 @@ void Array::insert(int element, int index) {
     }
   }
   this->length++;
-  delete [] A;
+  delete[] A;
   A = q;
   q = nullptr;
 }
 
-int Array::at(int index) {
-  return A[index];
-}
+int Array::get(int index) { return A[index]; }
+
+void Array::set(int element, int index) { A[index] = element; }
 
 void array_driver() {
   Array arr(0);
@@ -84,15 +82,36 @@ void array_driver() {
   arr.insert(8, 0);
   arr.insert(9, 0);
   arr.insert(10, 0);
-  std::cout << arr.at(0) << " ";
-  std::cout << arr.at(1) << " ";
-  std::cout << arr.at(2) << " ";
-  std::cout << arr.at(3) << " ";
-  std::cout << arr.at(4) << " ";
-  std::cout << arr.at(5) << " ";
-  std::cout << arr.at(6) << " ";
-  std::cout << arr.at(7) << " ";
-  std::cout << arr.at(8) << " ";
-  std::cout << arr.at(9) << " ";
+  std::cout << arr.get(0) << " ";
+  std::cout << arr.get(1) << " ";
+  std::cout << arr.get(2) << " ";
+  std::cout << arr.get(3) << " ";
+  std::cout << arr.get(4) << " ";
+  std::cout << arr.get(5) << " ";
+  std::cout << arr.get(6) << " ";
+  std::cout << arr.get(7) << " ";
+  std::cout << arr.get(8) << " ";
+  std::cout << arr.get(9) << " ";
+  std::cout << std::endl;
+  arr.set(1, 0);
+  arr.set(2, 1);
+  arr.set(3, 2);
+  arr.set(4, 3);
+  arr.set(5, 4);
+  arr.set(6, 5);
+  arr.set(7, 6);
+  arr.set(8, 7);
+  arr.set(9, 8);
+  arr.set(10, 9);
+  std::cout << arr.get(0) << " ";
+  std::cout << arr.get(1) << " ";
+  std::cout << arr.get(2) << " ";
+  std::cout << arr.get(3) << " ";
+  std::cout << arr.get(4) << " ";
+  std::cout << arr.get(5) << " ";
+  std::cout << arr.get(6) << " ";
+  std::cout << arr.get(7) << " ";
+  std::cout << arr.get(8) << " ";
+  std::cout << arr.get(9) << " ";
   std::cout << std::endl;
 }
