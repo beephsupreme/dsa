@@ -1,6 +1,7 @@
 #include "recursion.h"
 
 #include <iostream>
+#include <cstdint>
 
 void tail_recursion(int n) {
   if (n > 0) {
@@ -66,7 +67,8 @@ int sum_of_n(int n) {
   }
   return sum_of_n(n - 1) + n;
 }
-int factorial(int n) {
+
+uint64_t factorial(uint64_t n) {
   if (n < 2) {
     return 1;
   }

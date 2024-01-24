@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 
 void tail_recursion(int n);
 void head_recursion(int n);
@@ -10,7 +11,7 @@ void indirect_b(int i);
 void nested_recursion(int n);
 int nested_fun(int n);
 int sum_of_n(int n);
-int factorial(int n);
+uint64_t factorial(uint64_t n);
 int power(int m, int n);
 double taylor(int x, int n);
 double horner(int x, int n);
