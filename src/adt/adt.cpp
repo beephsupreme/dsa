@@ -50,16 +50,12 @@ int Array::getSize() { return this->size; }
 int Array::getLength() { return this->length; }
 
 void Array::insert(int element, int index) {
-  if (this->size == this->length) {
+  if ((this->length + 1) >= this->size) {
     this->resize();
   }
-  if (this->length == 0){
-    this->append(element);
-    return;
-  }
-  int* q = new int[this->size + 1];
-  for (int i = 0, r = 0; i < this->length; i++, r++) {
-    if (r == (index)) {
+  int* q = new int[this->size];
+  for (int i = 0, r = 0; r < this->length + 1; i++, r++) {
+    if (r == index) {
       q[r] = element;
       i--;
     } else {
@@ -78,16 +74,16 @@ int Array::at(int index) {
 
 void array_driver() {
   Array arr(0);
-  arr.append(1);
-  arr.append(2);
-  arr.append(3);
-  arr.append(4);
-  arr.append(5);
-  arr.append(6);
-  arr.append(7);
-  arr.append(8);
-  arr.append(9);
-  arr.append(10);
+  arr.insert(1, 0);
+  arr.insert(2, 0);
+  arr.insert(3, 0);
+  arr.insert(4, 0);
+  arr.insert(5, 0);
+  arr.insert(6, 0);
+  arr.insert(7, 0);
+  arr.insert(8, 0);
+  arr.insert(9, 0);
+  arr.insert(10, 0);
   std::cout << arr.at(0) << " ";
   std::cout << arr.at(1) << " ";
   std::cout << arr.at(2) << " ";
