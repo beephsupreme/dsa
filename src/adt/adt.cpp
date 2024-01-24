@@ -72,6 +72,31 @@ void Array::insert(int element, int index) {
   q = nullptr;
 }
 
-void array_driver() {
+int Array::at(int index) {
+  return A[index];
+}
 
+void array_driver() {
+  Array arr(0);
+  arr.append(1);
+  arr.append(2);
+  arr.append(3);
+  arr.append(4);
+  arr.append(5);
+  arr.append(6);
+  arr.append(7);
+  arr.append(8);
+  arr.append(9);
+  arr.append(10);
+  std::cout << arr.at(0) << " ";
+  std::cout << arr.at(1) << " ";
+  std::cout << arr.at(2) << " ";
+  std::cout << arr.at(3) << " ";
+  std::cout << arr.at(4) << " ";
+  std::cout << arr.at(5) << " ";
+  std::cout << arr.at(6) << " ";
+  std::cout << arr.at(7) << " ";
+  std::cout << arr.at(8) << " ";
+  std::cout << arr.at(9) << " ";
+  std::cout << std::endl;
 }

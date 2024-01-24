@@ -9,6 +9,7 @@ class Array {
     int getSize();
     int getLength();
     void insert(int element, int index);
+    int at(int index);
 
   private:
     int size;

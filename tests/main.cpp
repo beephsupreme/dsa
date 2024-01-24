@@ -6,7 +6,6 @@
 #include "recursion.h"
 
 TEST_CASE("ADT Array Append", "[append]") {
-  std::cout << "\nADT Array Append\n" << std::endl;
   Array arr(0);
   REQUIRE(arr.getSize() == 8);
   REQUIRE(arr.getLength() == 0);
@@ -42,8 +41,33 @@ TEST_CASE("ADT Array Append", "[append]") {
   REQUIRE(arr.getLength() == 10);
 }
 
-TEST_CASE("ADT Array Insert", "[insert]") {
-  std::cout << "\nADT Array Insert\n" << std::endl;
+TEST_CASE("ADT Array At", "[at]") {
+  Array arr(0);
+  arr.append(1);
+  arr.append(2);
+  arr.append(3);
+  arr.append(4);
+  arr.append(5);
+  arr.append(6);
+  arr.append(7);
+  arr.append(8);
+  arr.append(9);
+  arr.append(10);
+  REQUIRE(arr.at(0) == 1);
+  REQUIRE(arr.at(1) == 2);
+  REQUIRE(arr.at(2) == 3);
+  REQUIRE(arr.at(3) == 4);
+  REQUIRE(arr.at(4) == 5);
+  REQUIRE(arr.at(5) == 6);
+  REQUIRE(arr.at(6) == 7);
+  REQUIRE(arr.at(7) == 8);
+  REQUIRE(arr.at(8) == 9);
+  REQUIRE(arr.at(9) == 10);
+  REQUIRE(arr.getSize() == 16);
+  REQUIRE(arr.getLength() == 10);
+}
+
+  TEST_CASE("ADT Array Insert", "[insert]") {
   Array arr(0);
   arr.insert(1, 1);
   REQUIRE(arr.getSize() == 8);
