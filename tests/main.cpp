@@ -204,4 +204,5 @@ TEST_CASE("ADT Array Find", "[find]") {
   REQUIRE(arr.find(8) == 7);
   REQUIRE(arr.find(9) == 8);
   REQUIRE(arr.find(10) == 9);
+  REQUIRE(arr.find(11) == -1);
 }

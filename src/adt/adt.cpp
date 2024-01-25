@@ -80,12 +80,10 @@ int Array::remove(int index) {
 }
 
 int Array::find(int element) {
-  int index = -1;
   for (size_t i = 0; i < this->length; i++) {
     if (A[i] == element) {
-      index = i;
-      break;
+      return i;
     }
   }
-  return index;
+  return -1;
 }
