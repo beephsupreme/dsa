@@ -70,48 +70,33 @@ int Array::get(int index) { return A[index]; }
 
 void Array::set(int element, int index) { A[index] = element; }
 
+int Array::remove(int index) {
+  int element = A[index];
+  for (int i = index + 1; i < this->length; i++) {
+    A[i - 1] = A[i];
+  }
+  length--;
+  return element;
+}
+
 void array_driver() {
   Array arr(0);
-  arr.insert(1, 0);
-  arr.insert(2, 0);
-  arr.insert(3, 0);
-  arr.insert(4, 0);
-  arr.insert(5, 0);
-  arr.insert(6, 0);
-  arr.insert(7, 0);
-  arr.insert(8, 0);
-  arr.insert(9, 0);
-  arr.insert(10, 0);
-  std::cout << arr.get(0) << " ";
-  std::cout << arr.get(1) << " ";
-  std::cout << arr.get(2) << " ";
-  std::cout << arr.get(3) << " ";
-  std::cout << arr.get(4) << " ";
-  std::cout << arr.get(5) << " ";
-  std::cout << arr.get(6) << " ";
-  std::cout << arr.get(7) << " ";
-  std::cout << arr.get(8) << " ";
-  std::cout << arr.get(9) << " ";
-  std::cout << std::endl;
-  arr.set(1, 0);
-  arr.set(2, 1);
-  arr.set(3, 2);
-  arr.set(4, 3);
-  arr.set(5, 4);
-  arr.set(6, 5);
-  arr.set(7, 6);
-  arr.set(8, 7);
-  arr.set(9, 8);
-  arr.set(10, 9);
-  std::cout << arr.get(0) << " ";
-  std::cout << arr.get(1) << " ";
-  std::cout << arr.get(2) << " ";
-  std::cout << arr.get(3) << " ";
-  std::cout << arr.get(4) << " ";
-  std::cout << arr.get(5) << " ";
-  std::cout << arr.get(6) << " ";
-  std::cout << arr.get(7) << " ";
-  std::cout << arr.get(8) << " ";
-  std::cout << arr.get(9) << " ";
-  std::cout << std::endl;
+  arr.append(1);
+  arr.append(2);
+  arr.append(3);
+  arr.append(4);
+  arr.append(5);
+  arr.append(6);
+  arr.append(7);
+  arr.append(8);
+  arr.append(9);
+  arr.append(10);
+  arr.display();
+  arr.remove(0);
+  arr.remove(1);
+  arr.remove(2);
+  arr.remove(3);
+  arr.remove(4);
+  arr.remove(4);
+  arr.display();
 }

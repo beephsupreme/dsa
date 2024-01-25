@@ -11,6 +11,7 @@ class Array {
     void insert(int element, int index);
     int get(int index);
     void set(int element,int index);
+    int remove(int index);
 
   private:
     int size;

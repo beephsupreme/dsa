@@ -1,9 +1,9 @@
 #define CATCH_CONFIG_MAIN
 
 #include <catch2/catch.hpp>
-#include<iostream>
+#include <iostream>
+
 #include "adt.h"
-#include "recursion.h"
 
 TEST_CASE("ADT Array Get/Append", "[get-append]") {
   Array arr(0);
@@ -31,7 +31,7 @@ TEST_CASE("ADT Array Get/Append", "[get-append]") {
   REQUIRE(arr.getLength() == 10);
 }
 
-  TEST_CASE("ADT Array Insert @ Back", "[insert-back]") {
+TEST_CASE("ADT Array Insert @ Back", "[insert-back]") {
   Array arr(0);
   arr.insert(1, 0);
   arr.insert(2, 1);
@@ -57,7 +57,7 @@ TEST_CASE("ADT Array Get/Append", "[get-append]") {
   REQUIRE(arr.getLength() == 10);
 }
 
-  TEST_CASE("ADT Array Insert @ Front", "[insert-front]") {
+TEST_CASE("ADT Array Insert @ Front", "[insert-front]") {
   Array arr(0);
   arr.insert(1, 0);
   arr.insert(2, 0);
@@ -153,4 +153,31 @@ TEST_CASE("ADT Array Set", "[set]") {
   REQUIRE(arr.get(7) == 8);
   REQUIRE(arr.get(8) == 9);
   REQUIRE(arr.get(9) == 10);
+}
+
+TEST_CASE("ADT Array Remove", "[remove]") {
+  Array arr(0);
+  arr.append(1);
+  arr.remove(0);
+  REQUIRE(arr.getLength() == 0);
+  arr.append(1);
+  arr.append(2);
+  arr.append(3);
+  arr.append(4);
+  arr.append(5);
+  arr.append(6);
+  arr.append(7);
+  arr.append(8);
+  arr.append(9);
+  arr.append(10);
+  REQUIRE(arr.remove(0) == 1);
+  REQUIRE(arr.remove(1) == 3);
+  REQUIRE(arr.remove(2) == 5);
+  REQUIRE(arr.remove(3) == 7);
+  REQUIRE(arr.remove(4) == 9);
+  REQUIRE(arr.remove(4) == 10);
+  REQUIRE(arr.get(0) == 2);
+  REQUIRE(arr.get(1) == 4);
+  REQUIRE(arr.get(2) == 6);
+  REQUIRE(arr.get(3) == 8);
 }
