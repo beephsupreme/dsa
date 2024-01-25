@@ -181,3 +181,27 @@ TEST_CASE("ADT Array Remove", "[remove]") {
   REQUIRE(arr.get(2) == 6);
   REQUIRE(arr.get(3) == 8);
 }
+
+TEST_CASE("ADT Array Find", "[find]") {
+  Array arr(0);
+    arr.append(1);
+  arr.append(2);
+  arr.append(3);
+  arr.append(4);
+  arr.append(5);
+  arr.append(6);
+  arr.append(7);
+  arr.append(8);
+  arr.append(9);
+  arr.append(10);
+  REQUIRE(arr.find(1) == 0);
+  REQUIRE(arr.find(2) == 1);
+  REQUIRE(arr.find(3) == 2);
+  REQUIRE(arr.find(4) == 3);
+  REQUIRE(arr.find(5) == 4);
+  REQUIRE(arr.find(6) == 5);
+  REQUIRE(arr.find(7) == 6);
+  REQUIRE(arr.find(8) == 7);
+  REQUIRE(arr.find(9) == 8);
+  REQUIRE(arr.find(10) == 9);
+}

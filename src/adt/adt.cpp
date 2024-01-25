@@ -79,24 +79,13 @@ int Array::remove(int index) {
   return element;
 }
 
-void array_driver() {
-  Array arr(0);
-  arr.append(1);
-  arr.append(2);
-  arr.append(3);
-  arr.append(4);
-  arr.append(5);
-  arr.append(6);
-  arr.append(7);
-  arr.append(8);
-  arr.append(9);
-  arr.append(10);
-  arr.display();
-  arr.remove(0);
-  arr.remove(1);
-  arr.remove(2);
-  arr.remove(3);
-  arr.remove(4);
-  arr.remove(4);
-  arr.display();
+int Array::find(int element) {
+  int index = -1;
+  for (size_t i = 0; i < this->length; i++) {
+    if (A[i] == element) {
+      index = i;
+      break;
+    }
+  }
+  return index;
 }

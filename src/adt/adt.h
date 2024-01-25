@@ -12,6 +12,7 @@ class Array {
     int get(int index);
     void set(int element,int index);
     int remove(int index);
+    int find(int element);
 
   private:
     int size;
@@ -20,5 +21,3 @@ class Array {
     Array(){}
     void resize();
 };
-
-void array_driver();
