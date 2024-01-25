@@ -2,6 +2,7 @@
 
 class Array {
   public:
+    Array();
     Array(int size);
     ~Array();
     void display();
@@ -18,6 +19,5 @@ class Array {
     int size;
     int length;
     int *A;
-    Array(){}
     void resize();
 };

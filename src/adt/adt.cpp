@@ -2,12 +2,26 @@
 
 #include <iostream>
 
+Array::Array() {
+  this->size = 8;
+  this->A = new int[this->size];
+  this->length = 0;
+}
+
 Array::Array(int size) {
+  if (size < 0) {
+    std::cerr << "Array::Array(size) out of range." << std::endl;
+    throw size;
+  }
   if (size < 1) {
     size = 8;
   }
   this->size = size;
-  this->A = new int[size];
+  this->A = new (std::nothrow) int[size];
+  if (!A) {
+    std::cerr << "Array::Array(size) bad memory allocation." << std::endl;
+    throw size;
+  }
   this->length = 0;
 }
 
@@ -66,7 +80,13 @@ void Array::insert(int element, int index) {
   q = nullptr;
 }
 
-int Array::get(int index) { return A[index]; }
+int Array::get(int index) {
+  if (index < 0 || index > (this->length - 1)) {
+    std::cerr << "Array::get(index) out of range." << std::endl;
+    throw index;
+  }
+  return A[index];
+}
 
 void Array::set(int element, int index) { A[index] = element; }
 
