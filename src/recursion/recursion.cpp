@@ -135,8 +135,8 @@ int ncr(int n, int r) {
 
 void tower(int n, int A, int B, int C) {
   if (n > 0) {
-    tower(n-1, A, C, B);
+    tower(n - 1, A, C, B);
     std::cout << "from " << A << " to " << C << std::endl;
-    tower(n-1, B, A, C);
+    tower(n - 1, B, A, C);
   }
 }
