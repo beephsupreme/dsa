@@ -133,7 +133,6 @@ TEST_CASE("ADT Array Find", "[find]") {
     for (auto i = 1; i < 11; i++) {
         arr.append(i);
     }
-    arr.display();
     REQUIRE(arr.find(1) == 0);
     REQUIRE(arr.find(2) == 1);
     REQUIRE(arr.find(3) == 2);

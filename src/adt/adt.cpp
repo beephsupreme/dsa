@@ -119,3 +119,23 @@ int Array::find(const int element) const {
     }
     return -1;
 }
+
+int Array::min() const {
+    auto x = A[0];
+    for (auto i{0}; i < length; i++) {
+        if (A[i] < x) {
+            x = A[i];
+        }
+    }
+    return x;
+}
+
+int Array::max() const {
+    auto x = A[0];
+    for (auto i{0}; i < length; i++) {
+        if (A[i] > x) {
+            x = A[i];
+        }
+    }
+    return x;
+}
