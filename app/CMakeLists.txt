@@ -1,2 +1,2 @@
 add_executable(app main.cpp)
-target_link_libraries(app PUBLIC recursion arrays essentials adt)
+target_link_libraries(app PUBLIC recursion essentials adt)

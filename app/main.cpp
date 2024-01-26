@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "adt.h"
+#include "sections.h"
 
 using namespace std;
 
@@ -23,5 +24,7 @@ int main() {
         std::cerr << e.what() << std::endl;
         return 2;
     }
+
+    class_work_01();
     return 0;
 }
