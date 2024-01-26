@@ -5,7 +5,7 @@
 
 TEST_CASE("ADT Array Get/Append", "[get-append]") {
     Array arr;
-    for (int i = 1; i < 11; i++) { // NOLINT(*-magic-numbers)
+    for (auto i = 1; i < 11; i++) {
         arr.append(i);
     }
     REQUIRE(arr.get(0) == 1);
@@ -24,7 +24,7 @@ TEST_CASE("ADT Array Get/Append", "[get-append]") {
 
 TEST_CASE("ADT Array Insert @ Back", "[insert-back]") {
     Array arr;
-    for (int i = 0; i < 10; i++) { // NOLINT(*-magic-numbers)
+    for (auto i = 0; i < 10; i++) {
         arr.insert(i + 1, i);
     }
     REQUIRE(arr.get(0) == 1);
@@ -42,17 +42,10 @@ TEST_CASE("ADT Array Insert @ Back", "[insert-back]") {
 }
 
 TEST_CASE("ADT Array Insert @ Front", "[insert-front]") {
-    Array arr(0);
-    arr.insert(1, 0);
-    arr.insert(2, 0);
-    arr.insert(3, 0);
-    arr.insert(4, 0);
-    arr.insert(5, 0);
-    arr.insert(6, 0);
-    arr.insert(7, 0);
-    arr.insert(8, 0);
-    arr.insert(9, 0);
-    arr.insert(10, 0);
+    Array arr;
+    for (int i = 1; i < 11; i++) {
+        arr.insert(i, 0);
+    }
     REQUIRE(arr.get(0) == 10);
     REQUIRE(arr.get(1) == 9);
     REQUIRE(arr.get(2) == 8);
@@ -68,7 +61,7 @@ TEST_CASE("ADT Array Insert @ Front", "[insert-front]") {
 }
 
 TEST_CASE("ADT Array Insert @ Will", "[insert-will]") {
-    Array arr(0);
+    Array arr;
     arr.append(1);
     arr.append(2);
     arr.append(3);
@@ -96,64 +89,33 @@ TEST_CASE("ADT Array Insert @ Will", "[insert-will]") {
 }
 
 TEST_CASE("ADT Array Set", "[set]") {
-    Array arr(0);
-    arr.insert(1, 0);
-    arr.insert(2, 0);
-    arr.insert(3, 0);
-    arr.insert(4, 0);
-    arr.insert(5, 0);
-    arr.insert(6, 0);
-    arr.insert(7, 0);
-    arr.insert(8, 0);
-    arr.insert(9, 0);
-    arr.insert(10, 0);
-    REQUIRE(arr.get(0) == 10);
-    REQUIRE(arr.get(1) == 9);
-    REQUIRE(arr.get(2) == 8);
-    REQUIRE(arr.get(3) == 7);
-    REQUIRE(arr.get(4) == 6);
-    REQUIRE(arr.get(5) == 5);
-    REQUIRE(arr.get(6) == 4);
-    REQUIRE(arr.get(7) == 3);
-    REQUIRE(arr.get(8) == 2);
-    REQUIRE(arr.get(9) == 1);
-    arr.set(1, 0);
-    arr.set(2, 1);
-    arr.set(3, 2);
-    arr.set(4, 3);
-    arr.set(5, 4);
-    arr.set(6, 5);
-    arr.set(7, 6);
-    arr.set(8, 7);
-    arr.set(9, 8);
-    arr.set(10, 9);
-    REQUIRE(arr.get(0) == 1);
-    REQUIRE(arr.get(1) == 2);
-    REQUIRE(arr.get(2) == 3);
-    REQUIRE(arr.get(3) == 4);
-    REQUIRE(arr.get(4) == 5);
-    REQUIRE(arr.get(5) == 6);
-    REQUIRE(arr.get(6) == 7);
-    REQUIRE(arr.get(7) == 8);
-    REQUIRE(arr.get(8) == 9);
-    REQUIRE(arr.get(9) == 10);
+    Array arr;
+    for (auto i = 0; i < 10; i++) {
+        arr.append(i);
+    }
+    for (auto i = 0; i < 10; i++) {
+        arr.set(2 * (i + 1), i);
+    }
+    REQUIRE(arr.get(0) == 2);
+    REQUIRE(arr.get(1) == 4);
+    REQUIRE(arr.get(2) == 6);
+    REQUIRE(arr.get(3) == 8);
+    REQUIRE(arr.get(4) == 10);
+    REQUIRE(arr.get(5) == 12);
+    REQUIRE(arr.get(6) == 14);
+    REQUIRE(arr.get(7) == 16);
+    REQUIRE(arr.get(8) == 18);
+    REQUIRE(arr.get(9) == 20);
 }
 
 TEST_CASE("ADT Array Remove", "[remove]") {
-    Array arr(0);
+    Array arr;
     arr.append(1);
     arr.remove(0);
     REQUIRE(arr.getLength() == 0);
-    arr.append(1);
-    arr.append(2);
-    arr.append(3);
-    arr.append(4);
-    arr.append(5);
-    arr.append(6);
-    arr.append(7);
-    arr.append(8);
-    arr.append(9);
-    arr.append(10);
+    for (auto i = 1; i < 11; i++) {
+        arr.append(i);
+    }
     REQUIRE(arr.remove(0) == 1);
     REQUIRE(arr.remove(1) == 3);
     REQUIRE(arr.remove(2) == 5);
@@ -167,17 +129,11 @@ TEST_CASE("ADT Array Remove", "[remove]") {
 }
 
 TEST_CASE("ADT Array Find", "[find]") {
-    Array arr(0);
-    arr.append(1);
-    arr.append(2);
-    arr.append(3);
-    arr.append(4);
-    arr.append(5);
-    arr.append(6);
-    arr.append(7);
-    arr.append(8);
-    arr.append(9);
-    arr.append(10);
+    Array arr;
+    for (auto i = 1; i < 11; i++) {
+        arr.append(i);
+    }
+    arr.display();
     REQUIRE(arr.find(1) == 0);
     REQUIRE(arr.find(2) == 1);
     REQUIRE(arr.find(3) == 2);

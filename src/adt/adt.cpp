@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 
-Array::Array() : size(8), length(0), A(new int[this->size]) {
+Array::Array() : size(8), length(0), A(new int[size]) {
 }
 
 Array::Array(int size) {
@@ -13,12 +13,11 @@ Array::Array(int size) {
         size = 8;
     }
     this->size = size;
-    this->A = new(std::nothrow) int[size];
+    A = new(std::nothrow) int[size];
     if (!A) {
-        std::cerr << "Array::Array(size) bad memory allocation." << std::endl;
-        throw size;
+        throw std::out_of_range("Array::Array(size) failed allocation.");
     }
-    this->length = 0;
+    length = 0;
 }
 
 Array::~Array() {
@@ -26,37 +25,39 @@ Array::~Array() {
 }
 
 void Array::display() const {
-    if (this->length == 0) {
+    if (length == 0) {
         std::cout << "Array is empty!" << std::endl;
     } else {
-        for (int i = 0; i < this->length; i++) {
-            std::cout << this->A[i] << " ";
+        for (auto i = 0; i < length; i++) {
+            std::cout << A[i] << " ";
         }
         std::cout << std::endl;
     }
 }
 
-void Array::append(int element) {
-    if (this->size == this->length) {
+void Array::append(const int element) {
+    if (size == length) {
         this->resize();
     }
-    this->A[length] = element;
-    this->length++;
+    A[length] = element;
+    length++;
 }
 
 void Array::resize() {
-    this->size *= 2;
-    int *q = new int[this->size];
-    for (int i = 0; i < this->length; i++) {
-        q[i] = this->A[i];
+    size *= 2;
+    const auto q = new(std::nothrow) int[size];
+    if (!q) {
+        throw std::out_of_range("Array::resize() failed allocation.");
+    }
+    for (auto i = 0; i < length; i++) {
+        q[i] = A[i];
     }
     delete[] A;
     A = q;
-    q = nullptr;
 }
 
 int Array::getSize() const {
-    return this->size;
+    return size;
 }
 
 int Array::getLength() const {
@@ -64,11 +65,14 @@ int Array::getLength() const {
 }
 
 void Array::insert(const int element, const int index) {
-    if ((this->length + 1) >= this->size) {
+    if ((length + 1) >= size) {
         this->resize();
     }
-    int *q = new int[this->size];
-    for (int i = 0, r = 0; r < this->length + 1; i++, r++) {
+    const auto q = new(std::nothrow) int[size];
+    if (!q) {
+        throw std::out_of_range("Array::insert(element, index) failed allocation.");
+    }
+    for (auto i = 0, r = 0; r < length + 1; i++, r++) {
         if (r == index) {
             q[r] = element;
             i--;
@@ -76,35 +80,39 @@ void Array::insert(const int element, const int index) {
             q[r] = A[i];
         }
     }
-    this->length++;
+    length++;
     delete[] A;
     A = q;
-    q = nullptr;
 }
 
-int Array::get(int index) const {
-    if (index < 0 || index > (this->length - 1)) {
-        std::cerr << "Array::get(index) out of range." << std::endl;
-        throw index;
+int Array::get(const int index) const {
+    if (index < 0 || index > (length - 1)) {
+        throw std::out_of_range("Array::get(index) out of range.");
     }
     return A[index];
 }
 
 void Array::set(const int element, const int index) const {
+    if (index < 0 || index > (length - 1)) {
+        throw std::out_of_range("Array::set(element, index) out of range.");
+    }
     A[index] = element;
 }
 
 int Array::remove(const int index) {
+    if (index < 0 || index > (length - 1)) {
+        throw std::out_of_range("Array::remove(index) out of range.");
+    }
     const int element = A[index];
-    for (int i = index; i < this->length; i++) {
+    for (int i = index; i < length; i++) {
         A[i] = A[i + 1];
     }
     length--;
     return element;
 }
 
-int Array::find(const int element) {
-    for (int i = 0; i < this->length; i++) {
+int Array::find(const int element) const {
+    for (int i = 0; i < length; i++) {
         if (A[i] == element) {
             return i;
         }

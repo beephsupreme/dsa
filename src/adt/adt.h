@@ -13,7 +13,7 @@ class Array {
     [[nodiscard]] int get(int index) const;
     void set(int element,int index) const;
     int remove(int index);
-    int find(int element);
+    [[nodiscard]] int find(int element) const;
 
   private:
     int size;
