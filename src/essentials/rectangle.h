@@ -2,14 +2,14 @@
 
 class Rectangle {
   private:
-    int _length;
-    int _width;
+    int length;
+    int width;
   public:
-    Rectangle(int l, int w);
+    Rectangle(int length, int width);
     ~Rectangle();
-    int get_length();
-    int get_width();
-    void set_length(int l);
-    void set_width(int w);
-    int area();
+    [[nodiscard]] int get_length() const;
+    [[nodiscard]] int get_width() const;
+    void set_length(int length);
+    void set_width(int width);
+    [[nodiscard]] int area() const;
 };

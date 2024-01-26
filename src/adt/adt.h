@@ -3,15 +3,15 @@
 class Array {
   public:
     Array();
-    Array(int size);
+    explicit Array(int size);
     ~Array();
-    void display();
+    void display() const;
     void append(int element);
-    int getSize();
-    int getLength();
+    [[nodiscard]] int getSize() const;
+    [[nodiscard]] int getLength() const;
     void insert(int element, int index);
-    int get(int index);
-    void set(int element,int index);
+    [[nodiscard]] int get(int index) const;
+    void set(int element,int index) const;
     int remove(int index);
     int find(int element);
 

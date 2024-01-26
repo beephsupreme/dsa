@@ -1,9 +1,9 @@
 #include <iostream>
 #include "rectangle.h"
 
-Rectangle::Rectangle(int l, int w){
-  _length = l;
-  _width = w;
+Rectangle::Rectangle(const int length, const int width) : length(length), width(width){
+
+
   std::cout << "Rectangle created!" << std::endl;
 }
 
@@ -11,22 +11,22 @@ Rectangle::~Rectangle() {
   std::cout << "Rectangle destroyed!" << std::endl;
 }
 
-int Rectangle::area() {
-  return _length * _width;
+int Rectangle::area() const {
+  return length * width;
 }
 
-int Rectangle::get_length() {
-  return _length;
+int Rectangle::get_length() const {
+  return length;
 }
 
-int Rectangle::get_width(){
-  return _width;
+int Rectangle::get_width() const{
+  return width;
 }
 
 void Rectangle::set_length(int l) {
-  _length = l;
+  length = l;
 }
 
 void Rectangle::set_width(int w) {
-  _width = w;
+  width = w;
 }
