@@ -5,19 +5,12 @@
 
 TEST_CASE("ADT Array Get/Append", "[get-append]") {
   Array arr;
-  for (auto i = 1; i < 11; i++) {
+  for (auto i{1}; i < 11; i++) {
     arr.append(i);
   }
-  REQUIRE(arr.get(0) == 1);
-  REQUIRE(arr.get(1) == 2);
-  REQUIRE(arr.get(2) == 3);
-  REQUIRE(arr.get(3) == 4);
-  REQUIRE(arr.get(4) == 5);
-  REQUIRE(arr.get(5) == 6);
-  REQUIRE(arr.get(6) == 7);
-  REQUIRE(arr.get(7) == 8);
-  REQUIRE(arr.get(8) == 9);
-  REQUIRE(arr.get(9) == 10);
+  for (auto i{0}; i < 10; i++) {
+    REQUIRE(arr.get(i) == i + 1);
+  }
   REQUIRE(arr.getSize() == 16);
   REQUIRE(arr.getLength() == 10);
 }
@@ -27,16 +20,9 @@ TEST_CASE("ADT Array Insert @ Back", "[insert-back]") {
   for (auto i = 0; i < 10; i++) {
     arr.insert(i + 1, i);
   }
-  REQUIRE(arr.get(0) == 1);
-  REQUIRE(arr.get(1) == 2);
-  REQUIRE(arr.get(2) == 3);
-  REQUIRE(arr.get(3) == 4);
-  REQUIRE(arr.get(4) == 5);
-  REQUIRE(arr.get(5) == 6);
-  REQUIRE(arr.get(6) == 7);
-  REQUIRE(arr.get(7) == 8);
-  REQUIRE(arr.get(8) == 9);
-  REQUIRE(arr.get(9) == 10);
+  for (auto i{0}; i < 10; i++) {
+    REQUIRE(arr.get(i) == i + 1);
+  }
   REQUIRE(arr.getSize() == 16);
   REQUIRE(arr.getLength() == 10);
 }
@@ -46,16 +32,10 @@ TEST_CASE("ADT Array Insert @ Front", "[insert-front]") {
   for (int i = 1; i < 11; i++) {
     arr.insert(i, 0);
   }
-  REQUIRE(arr.get(0) == 10);
-  REQUIRE(arr.get(1) == 9);
-  REQUIRE(arr.get(2) == 8);
-  REQUIRE(arr.get(3) == 7);
-  REQUIRE(arr.get(4) == 6);
-  REQUIRE(arr.get(5) == 5);
-  REQUIRE(arr.get(6) == 4);
-  REQUIRE(arr.get(7) == 3);
-  REQUIRE(arr.get(8) == 2);
-  REQUIRE(arr.get(9) == 1);
+  arr.display();
+  for (auto i{0}, j{10}; i < 10; i++, j--) {
+    REQUIRE(arr.get(i) == j);
+  }
   REQUIRE(arr.getSize() == 16);
   REQUIRE(arr.getLength() == 10);
 }
@@ -96,16 +76,9 @@ TEST_CASE("ADT Array Set", "[set]") {
   for (auto i = 0; i < 10; i++) {
     arr.set(2 * (i + 1), i);
   }
-  REQUIRE(arr.get(0) == 2);
-  REQUIRE(arr.get(1) == 4);
-  REQUIRE(arr.get(2) == 6);
-  REQUIRE(arr.get(3) == 8);
-  REQUIRE(arr.get(4) == 10);
-  REQUIRE(arr.get(5) == 12);
-  REQUIRE(arr.get(6) == 14);
-  REQUIRE(arr.get(7) == 16);
-  REQUIRE(arr.get(8) == 18);
-  REQUIRE(arr.get(9) == 20);
+  for (auto i{0}; i < 10; i++) {
+    REQUIRE(arr.get(i) == 2*(i+1));
+  }
 }
 
 TEST_CASE("ADT Array Remove", "[remove]") {
@@ -133,63 +106,30 @@ TEST_CASE("ADT Array Find", "[find]") {
   for (auto i = 1; i < 11; i++) {
     arr.append(i);
   }
-  REQUIRE(arr.find(1) == 0);
-  REQUIRE(arr.find(2) == 1);
-  REQUIRE(arr.find(3) == 2);
-  REQUIRE(arr.find(4) == 3);
-  REQUIRE(arr.find(5) == 4);
-  REQUIRE(arr.find(6) == 5);
-  REQUIRE(arr.find(7) == 6);
-  REQUIRE(arr.find(8) == 7);
-  REQUIRE(arr.find(9) == 8);
-  REQUIRE(arr.find(10) == 9);
+  for (auto i{0}; i < 10; i++) {
+    REQUIRE(arr.find(i + 1) == i);
+  }
   REQUIRE(arr.find(11) == -1);
 }
 
 TEST_CASE("ADT Array Reverse", "[reverse]") {
   Array arr;
-  for (auto i = 0; i < 10; i++) {
+  for (auto i{0}; i < 10; i++) {
     arr.append(i);
   }
-  REQUIRE(arr.get(0) == 0);
-  REQUIRE(arr.get(1) == 1);
-  REQUIRE(arr.get(2) == 2);
-  REQUIRE(arr.get(3) == 3);
-  REQUIRE(arr.get(4) == 4);
-  REQUIRE(arr.get(5) == 5);
-  REQUIRE(arr.get(6) == 6);
-  REQUIRE(arr.get(7) == 7);
-  REQUIRE(arr.get(8) == 8);
-  REQUIRE(arr.get(9) == 9);
+  for (auto i{0}; i < 10; i++) {
+    REQUIRE(arr.get(i) == i);
+  }
   arr.reverse();
-  REQUIRE(arr.get(0) == 9);
-  REQUIRE(arr.get(1) == 8);
-  REQUIRE(arr.get(2) == 7);
-  REQUIRE(arr.get(3) == 6);
-  REQUIRE(arr.get(4) == 5);
-  REQUIRE(arr.get(5) == 4);
-  REQUIRE(arr.get(6) == 3);
-  REQUIRE(arr.get(7) == 2);
-  REQUIRE(arr.get(8) == 1);
-  REQUIRE(arr.get(9) == 0);
+  for (auto i{0}, j{9}; i < 10; i++, j--) {
+    REQUIRE(arr.get(i) == j);
+  }
   arr.remove(9);
-  REQUIRE(arr.get(0) == 9);
-  REQUIRE(arr.get(1) == 8);
-  REQUIRE(arr.get(2) == 7);
-  REQUIRE(arr.get(3) == 6);
-  REQUIRE(arr.get(4) == 5);
-  REQUIRE(arr.get(5) == 4);
-  REQUIRE(arr.get(6) == 3);
-  REQUIRE(arr.get(7) == 2);
-  REQUIRE(arr.get(8) == 1);
+  for (auto i{0}, j{9}; i < 9; i++, j--) {
+    REQUIRE(arr.get(i) == j);
+  }
   arr.reverse();
-  REQUIRE(arr.get(0) == 1);
-  REQUIRE(arr.get(1) == 2);
-  REQUIRE(arr.get(2) == 3);
-  REQUIRE(arr.get(3) == 4);
-  REQUIRE(arr.get(4) == 5);
-  REQUIRE(arr.get(5) == 6);
-  REQUIRE(arr.get(6) == 7);
-  REQUIRE(arr.get(7) == 8);
-  REQUIRE(arr.get(8) == 9);
+  for (auto i{0}; i < 9; i++) {
+    REQUIRE(arr.get(i) == i + 1);
+  }
 }

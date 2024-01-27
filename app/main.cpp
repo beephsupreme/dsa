@@ -16,5 +16,14 @@ int main() {
   cout << "Max: " << arr.max() << endl;
   arr.reverse();
   arr.display();
+
+  auto g = [&arr](int x) -> int {
+    return arr.get(x);
+  };
+
+  for (auto i{0}; i < 5; i++) {
+    cout << g(i) << endl;
+  }
+  arr.display();
   return 0;
 }
