@@ -28,3 +28,6 @@ void Rectangle::set_length(const int length) {
 void Rectangle::set_width(const int width) {
   this->width = width;
 }
+int Rectangle::perimeter() const {
+  return 2*(length+width);
+}

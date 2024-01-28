@@ -1,5 +1,6 @@
 #include <iostream>
 #include "adt.h"
+#include "rectangle.h"
 
 using namespace std;
 
@@ -25,5 +26,9 @@ int main() {
     cout << g(i) << endl;
   }
   arr.display();
+
+  Rectangle r(10, 5);
+  cout << "rectangle has area " << r.area() << endl;
+  cout << "rectangle has perimeter " << r.perimeter() << endl;
   return 0;
 }
