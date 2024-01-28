@@ -20,6 +20,24 @@ Array::Array(int size) {
   length = 0;
 }
 
+Array::Array(Array &c) {
+  size = c.size;
+  length = c.length;
+  if (size < 0) {
+    throw std::out_of_range("Array::Array(size) invalid size.");
+  }
+  if (size < 1) {
+    size = 8;
+  }
+  A = new(std::nothrow) int[size];
+  if (!A) {
+    throw std::out_of_range("Array::Array(size) failed allocation.");
+  }
+  for (auto i{0}; i < length; i++){
+    A[i] = c.A[i];
+  }
+}
+
 Array::~Array() {
   delete[] A;
 }

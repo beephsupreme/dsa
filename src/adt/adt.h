@@ -4,6 +4,7 @@ class Array {
  public:
   Array();
   explicit Array(int size);
+  Array(Array &c);
   ~Array();
   void display() const;
   void append(int element);
@@ -22,9 +23,9 @@ class Array {
   void sort();
   bool isSorted();
  private:
-  int size;
-  int length;
-  int *A;
+  int size{};
+  int length{};
+  int *A{};
   void resize();
   int linear_search(int element);
   int binary_search(int element);

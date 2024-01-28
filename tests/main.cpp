@@ -112,13 +112,11 @@ TEST_CASE("ADT Array Find", "[find]") {
   arr.append(9);
   arr.append(6);
   arr.append(10);
-  arr.display();
   REQUIRE(arr.find(8) == 0);
   REQUIRE(arr.find(1) == 3);
   REQUIRE(arr.find(10) == 9);
   REQUIRE(arr.find(11) == -1);
   arr.sort();
-  arr.display();
   for (auto i{0}; i < 10; i++) {
     REQUIRE(arr.find(i + 1) == i);
   }
@@ -172,4 +170,30 @@ TEST_CASE("ADT Array Sort", "[sort]") {
   for (auto i{0}; i < 10; i++) {
     REQUIRE(arr.get(i) == i);
   }
+}
+
+TEST_CASE("ADT Array Copy Constructor", "[copy]") {
+  Array arr;
+  arr.append(8);
+  arr.append(2);
+  arr.append(7);
+  arr.append(1);
+  arr.append(3);
+  arr.append(4);
+  arr.append(5);
+  arr.append(9);
+  arr.append(6);
+  arr.append(10);
+  Array copy(arr);
+  arr.reverse();
+  REQUIRE(copy.find(8) == 0);
+  REQUIRE(copy.find(2) == 1);
+  REQUIRE(copy.find(7) == 2);
+  REQUIRE(copy.find(1) == 3);
+  REQUIRE(copy.find(3) == 4);
+  REQUIRE(copy.find(4) == 5);
+  REQUIRE(copy.find(5) == 6);
+  REQUIRE(copy.find(9) == 7);
+  REQUIRE(copy.find(6) == 8);
+  REQUIRE(copy.find(10) == 9);
 }
