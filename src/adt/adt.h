@@ -20,12 +20,12 @@ class Array {
   int sum();
   double avg();
   void sort();
+  bool isSorted();
  private:
   int size;
   int length;
   int *A;
   void resize();
-  bool sorted;
   int linear_search(int element);
   int binary_search(int element);
 };

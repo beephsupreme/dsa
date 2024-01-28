@@ -102,14 +102,23 @@ TEST_CASE("ADT Array Remove", "[remove]") {
 
 TEST_CASE("ADT Array Find", "[find]") {
   Array arr;
-  for (auto i = 1; i < 11; i++) {
-    arr.append(i);
-  }
-  for (auto i{0}; i < 10; i++) {
-    REQUIRE(arr.find(i + 1) == i);
-  }
+  arr.append(8);
+  arr.append(2);
+  arr.append(7);
+  arr.append(1);
+  arr.append(3);
+  arr.append(4);
+  arr.append(5);
+  arr.append(9);
+  arr.append(6);
+  arr.append(10);
+  arr.display();
+  REQUIRE(arr.find(8) == 0);
+  REQUIRE(arr.find(1) == 3);
+  REQUIRE(arr.find(10) == 9);
   REQUIRE(arr.find(11) == -1);
   arr.sort();
+  arr.display();
   for (auto i{0}; i < 10; i++) {
     REQUIRE(arr.find(i + 1) == i);
   }

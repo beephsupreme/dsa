@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 
-Array::Array() : size(8), length(0), sorted(false), A(new int[size]) {
+Array::Array() : size(8), length(0), A(new int[size]) {
 }
 
 Array::Array(int size) {
@@ -18,7 +18,6 @@ Array::Array(int size) {
     throw std::out_of_range("Array::Array(size) failed allocation.");
   }
   length = 0;
-  sorted = false;
 }
 
 Array::~Array() {
@@ -42,7 +41,6 @@ void Array::append(const int element) {
   }
   A[length] = element;
   length++;
-  sorted = false;
 }
 
 void Array::resize() {
@@ -83,7 +81,6 @@ void Array::insert(const int element, const int index) {
     }
   }
   length++;
-  sorted = false;
   delete[] A;
   A = q;
 }
@@ -100,7 +97,6 @@ void Array::set(int element, int index) {
     throw std::out_of_range("Array::set(element, index) out of range.");
   }
   A[index] = element;
-  sorted = false;
 }
 
 int Array::remove(const int index) {
@@ -113,14 +109,6 @@ int Array::remove(const int index) {
   }
   length--;
   return element;
-}
-
-int Array::find(int element) {
-  if (sorted) {
-    return this->binary_search(element);
-  } else {
-    return this->linear_search(element);
-  }
 }
 
 int Array::min() const {
@@ -185,8 +173,17 @@ void Array::sort() {
       A[min] = temp;
     }
   }
-  sorted = true;
 }
+
+bool Array::isSorted() {
+  for (auto i{0}; i < length - 1; i++) {
+    if (A[i] > A[i + 1]) {
+      return false;
+    }
+  }
+  return true;
+}
+
 int Array::linear_search(int element) {
   for (int i = 0; i < length; i++) {
     if (A[i] == element) {
@@ -195,6 +192,7 @@ int Array::linear_search(int element) {
   }
   return -1;
 }
+
 int Array::binary_search(int element) {
   int l{0}, h{length - 1}, mid;
   while (l <= h) {
@@ -208,4 +206,12 @@ int Array::binary_search(int element) {
     }
   }
   return -1;
+}
+
+int Array::find(int element) {
+  if (isSorted()) {
+    return this->binary_search(element);
+  } else {
+    return this->linear_search(element);
+  }
 }
