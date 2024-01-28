@@ -32,7 +32,6 @@ TEST_CASE("ADT Array Insert @ Front", "[insert-front]") {
   for (int i = 1; i < 11; i++) {
     arr.insert(i, 0);
   }
-  arr.display();
   for (auto i{0}, j{10}; i < 10; i++, j--) {
     REQUIRE(arr.get(i) == j);
   }
@@ -77,7 +76,7 @@ TEST_CASE("ADT Array Set", "[set]") {
     arr.set(2 * (i + 1), i);
   }
   for (auto i{0}; i < 10; i++) {
-    REQUIRE(arr.get(i) == 2*(i+1));
+    REQUIRE(arr.get(i) == 2 * (i + 1));
   }
 }
 
@@ -110,6 +109,11 @@ TEST_CASE("ADT Array Find", "[find]") {
     REQUIRE(arr.find(i + 1) == i);
   }
   REQUIRE(arr.find(11) == -1);
+  arr.sort();
+  for (auto i{0}; i < 10; i++) {
+    REQUIRE(arr.find(i + 1) == i);
+  }
+  REQUIRE(arr.find(11) == -1);
 }
 
 TEST_CASE("ADT Array Reverse", "[reverse]") {
@@ -131,5 +135,32 @@ TEST_CASE("ADT Array Reverse", "[reverse]") {
   arr.reverse();
   for (auto i{0}; i < 9; i++) {
     REQUIRE(arr.get(i) == i + 1);
+  }
+}
+
+TEST_CASE("ADT Array Sum", "[sum]") {
+  Array arr;
+  for (auto i{1}; i < 11; i++) {
+    arr.append(i);
+  }
+  REQUIRE(arr.sum() == 55);
+}
+
+TEST_CASE("ADT Array Avg", "[avg]") {
+  Array arr;
+  for (auto i{1}; i < 11; i++) {
+    arr.append(i);
+  }
+  REQUIRE(arr.avg() == 5.5);
+}
+
+TEST_CASE("ADT Array Sort", "[sort]") {
+  Array arr;
+  for (auto i{9}; i >= 0; i--) {
+    arr.append(i);
+  }
+  arr.sort();
+  for (auto i{0}; i < 10; i++) {
+    REQUIRE(arr.get(i) == i);
   }
 }

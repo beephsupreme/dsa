@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 
-Array::Array() : size(8), length(0), A(new int[size]) {
+Array::Array() : size(8), length(0), sorted(false), A(new int[size]) {
 }
 
 Array::Array(int size) {
@@ -18,6 +18,7 @@ Array::Array(int size) {
     throw std::out_of_range("Array::Array(size) failed allocation.");
   }
   length = 0;
+  sorted = false;
 }
 
 Array::~Array() {
@@ -41,6 +42,7 @@ void Array::append(const int element) {
   }
   A[length] = element;
   length++;
+  sorted = false;
 }
 
 void Array::resize() {
@@ -81,6 +83,7 @@ void Array::insert(const int element, const int index) {
     }
   }
   length++;
+  sorted = false;
   delete[] A;
   A = q;
 }
@@ -92,11 +95,12 @@ int Array::get(const int index) const {
   return A[index];
 }
 
-void Array::set(const int element, const int index) const {
+void Array::set(int element, int index) {
   if (index < 0 || index > (length - 1)) {
     throw std::out_of_range("Array::set(element, index) out of range.");
   }
   A[index] = element;
+  sorted = false;
 }
 
 int Array::remove(const int index) {
@@ -111,13 +115,12 @@ int Array::remove(const int index) {
   return element;
 }
 
-int Array::find(const int element) const {
-  for (int i = 0; i < length; i++) {
-    if (A[i] == element) {
-      return i;
-    }
+int Array::find(int element) {
+  if (sorted) {
+    return this->binary_search(element);
+  } else {
+    return this->linear_search(element);
   }
-  return -1;
 }
 
 int Array::min() const {
@@ -150,4 +153,59 @@ void Array::reverse() {
   }
   delete[] A;
   A = q;
+}
+
+int Array::sum() {
+  auto sum{0};
+  for (auto i{0}; i < length; i++) {
+    sum += A[i];
+  }
+  return sum;
+}
+double Array::avg() {
+  if (length == 0) {
+    throw std::out_of_range("Array::avg() 0-length array has no average.");
+  }
+  auto s = static_cast<double>(sum());
+  return s / static_cast<double>(length);
+}
+
+void Array::sort() {
+  int i, j, min;
+  for (i = 0; i < length; i++) {
+    min = i;
+    for (j = i + 1; j < length; j++) {
+      if (A[j] < A[min]) {
+        min = j;
+      }
+    }
+    if (min != i) {
+      int temp{A[i]};
+      A[i] = A[min];
+      A[min] = temp;
+    }
+  }
+  sorted = true;
+}
+int Array::linear_search(int element) {
+  for (int i = 0; i < length; i++) {
+    if (A[i] == element) {
+      return i;
+    }
+  }
+  return -1;
+}
+int Array::binary_search(int element) {
+  int l{0}, h{length - 1}, mid;
+  while (l <= h) {
+    mid = (l + h) / 2;
+    if (element == A[mid]) {
+      return mid;
+    } else if (element < A[mid]) {
+      h = mid - 1;
+    } else {
+      l = mid + 1;
+    }
+  }
+  return -1;
 }
