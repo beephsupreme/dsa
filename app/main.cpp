@@ -1,9 +1,11 @@
 #include <iostream>
 #include "adt.h"
+#include "config.h"
 
 using namespace std;
 
 int main() {
+  cout << project_name << " " << project_version << endl;
   Array arr;
   arr.append(23);
   arr.append(24);
