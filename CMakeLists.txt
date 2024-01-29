@@ -10,7 +10,7 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
 include(AddGitSubmodule)
 include(FetchContent)
 
-add_git_submodule(external/jason)
+add_git_submodule(external/json)
 
 FetchContent_Declare(
     Catch2
