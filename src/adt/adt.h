@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ *  @brief Array data structure that manages array elements on the heap.
+ */
 class Array {
  public:
   Array();
