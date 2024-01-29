@@ -7,7 +7,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS        OFF)
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
+include(AddGitSubmodule)
 include(FetchContent)
+
+add_git_submodule(external/jason)
 
 FetchContent_Declare(
     Catch2
