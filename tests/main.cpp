@@ -29,7 +29,7 @@ TEST_CASE("ADT Array Insert @ Back", "[insert-back]") {
 
 TEST_CASE("ADT Array Insert @ Front", "[insert-front]") {
   Array arr;
-  for (int i = 1; i < 11; i++) {
+  for (auto i{1}; i < 11; i++) {
     arr.insert(i, 0);
   }
   for (auto i{0}, j{10}; i < 10; i++, j--) {

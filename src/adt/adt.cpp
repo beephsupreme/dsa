@@ -1,7 +1,6 @@
 #include "adt.h"
 #include <iostream>
 #include <stdexcept>
-#include <cstdint>
 
 Array::Array() : size(8), length(0), A(new int[size]) {
 }
@@ -21,9 +20,9 @@ Array::Array(int32_t size) {
   length = 0;
 }
 
-Array::Array(Array &c) {
-  size = c.size;
-  length = c.length;
+Array::Array(Array &arr) {
+  size = arr.size;
+  length = arr.length;
   if (size < 0) {
     throw std::out_of_range("Array::Array(size) invalid size.");
   }
@@ -35,7 +34,7 @@ Array::Array(Array &c) {
     throw std::out_of_range("Array::Array(size) failed allocation.");
   }
   for (auto i{0}; i < length; i++){
-    A[i] = c.A[i];
+    A[i] = arr.A[i];
   }
 }
 

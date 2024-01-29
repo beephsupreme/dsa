@@ -1,6 +1,5 @@
 #include <iostream>
 #include "adt.h"
-#include "rectangle.h"
 
 using namespace std;
 
