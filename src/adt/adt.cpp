@@ -6,18 +6,23 @@ Array::Array() : size(8), length(0), A(new int[size]) {
 }
 
 Array::Array(int32_t size) {
-  if (size < 0) {
-    throw std::out_of_range("Array::Array(size) invalid size.");
+  try {
+    if (size < 0) {
+      throw std::out_of_range("size < 0");
+    }
+    if (size < 1) {
+      size = 8;
+    }
+    this->size = size;
+    A = new int32_t[size];
+    length = 0;
+  } catch (std::bad_alloc &) {
+    std::cerr << "Array::Array(size) could not allocate heap memory to create array" << std::endl;
+    throw;
+  } catch (std::out_of_range &) {
+    std::cerr << "Array::Array(size) size cannot be less than 0" << std::endl;
+    throw;
   }
-  if (size < 1) {
-    size = 8;
-  }
-  this->size = size;
-  A = new(std::nothrow) int32_t[size];
-  if (!A) {
-    throw std::out_of_range("Array::Array(size) failed allocation.");
-  }
-  length = 0;
 }
 
 Array::Array(Array &arr) {
@@ -33,7 +38,7 @@ Array::Array(Array &arr) {
   if (!A) {
     throw std::out_of_range("Array::Array(size) failed allocation.");
   }
-  for (auto i{0}; i < length; i++){
+  for (auto i{0}; i < length; i++) {
     A[i] = arr.A[i];
   }
 }
@@ -74,11 +79,11 @@ void Array::resize() {
   A = q;
 }
 
-int32_t Array::getSize() const {
+int32_t Array::getSize() const noexcept {
   return size;
 }
 
-int32_t Array::getLength() const {
+int32_t Array::getLength() const noexcept {
   return this->length;
 }
 
@@ -150,15 +155,17 @@ int32_t Array::max() const {
 }
 
 void Array::reverse() {
-  const auto q = new(std::nothrow) int32_t[size];
-  if (!q) {
-    throw std::out_of_range("Array::insert(element, index) failed allocation.");
+  try {
+    const auto q = new int32_t[size];
+    for (auto i{0}, j{length - 1}; i < length; i++, j--) {
+      q[i] = A[j];
+    }
+    delete[] A;
+    A = q;
+  } catch (std::bad_alloc &) {
+    std::cerr << "Array::reverse() could not allocate heap memory to reverse array" << std::endl;
+    throw;
   }
-  for (auto i{0}, j{length - 1}; i < length; i++, j--) {
-    q[i] = A[j];
-  }
-  delete[] A;
-  A = q;
 }
 
 int32_t Array::sum() {

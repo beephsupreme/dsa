@@ -15,6 +15,7 @@ class Array {
   /**
    * @details Creates an Array with capacity = size
    * @param size
+   * @throw out-of-range
    */
   explicit Array(int32_t size);
 
@@ -43,12 +44,12 @@ class Array {
   /**
    * @returns The amount of integers that can be stored without resizing
    */
-  [[nodiscard]] int32_t getSize() const;
+  [[nodiscard]] int32_t getSize() const noexcept;
 
   /**
    * @returns How many elements are currently in the array
    */
-  [[nodiscard]] int32_t getLength() const;
+  [[nodiscard]] int32_t getLength() const noexcept;
 
   /**
    * @details Inserts 'element' into the array at position 'index'
@@ -97,7 +98,9 @@ class Array {
   [[nodiscard]] int32_t max() const;
 
 /**
-* @details Reverses the order of the elements in the array
+ * @details Reverses the order of the elements in the array. This is done by allocating heap memory and copying the
+ * existing array elements in reverse order. The old array is then deleted.
+ * @throw bad_alloc
 */
   void reverse();
 
@@ -123,7 +126,7 @@ class Array {
  * @returns a boolean value indicating whether or not the Array is sorted
 */
   bool isSorted();
-  
+
  private:
   int32_t size{};
   int32_t length{};
