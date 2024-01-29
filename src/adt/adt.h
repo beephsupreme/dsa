@@ -1,35 +1,78 @@
 #pragma once
+#include <cstdint>
 
 /**
  *  @brief Array data structure that manages array elements on the heap.
  */
 class Array {
  public:
+  /**
+   * @brief Default Constructor
+   */
   Array();
-  explicit Array(int size);
+
+  /**
+   * @brief Construct Array with a specific size.
+   * @param size
+   */
+  explicit Array(int32_t size);
+
+  /**
+   * Array copy-constructor
+   * @param c
+   */
   Array(Array &c);
+
+  /**
+   * @brief default destructor
+   */
   ~Array();
+
+  /**
+   * @brief Display array contents
+   */
   void display() const;
-  void append(int element);
-  [[nodiscard]] int getSize() const;
-  [[nodiscard]] int getLength() const;
-  void insert(int element, int index);
-  [[nodiscard]] int get(int index) const;
-  void set(int element, int index);
-  int remove(int index);
-  [[nodiscard]] int find(int element);
-  [[nodiscard]] int min() const;
-  [[nodiscard]] int max() const;
+
+  /**
+   * @brief add element to end of the array
+   * @param element
+   */
+  void append(int32_t element);
+
+  /**
+   * @brief get size of the array
+   * @return capacity of array
+   */
+  [[nodiscard]] int32_t getSize() const;
+
+  /**
+   * @brief get the length of the array
+   * @return how many elements are in the array
+   */
+  [[nodiscard]] int32_t getLength() const;
+
+  /**
+   * @brief insert element in array position index
+   * @param element
+   * @param index
+   */
+  void insert(int32_t element, int32_t index);
+  [[nodiscard]] int32_t get(int32_t index) const;
+  void set(int32_t element, int32_t index);
+  int32_t remove(int32_t index);
+  [[nodiscard]] int32_t find(int32_t element);
+  [[nodiscard]] int32_t min() const;
+  [[nodiscard]] int32_t max() const;
   void reverse();
-  int sum();
+  int32_t sum();
   double avg();
   void sort();
   bool isSorted();
  private:
-  int size{};
-  int length{};
-  int *A{};
+  int32_t size{};
+  int32_t length{};
+  int32_t *A{};
   void resize();
-  int linear_search(int element);
-  int binary_search(int element);
+  int32_t linear_search(int32_t element);
+  int32_t binary_search(int32_t element);
 };
