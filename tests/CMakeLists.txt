@@ -1,3 +1,3 @@
-add_executable(unit-tests main.cpp)
-target_include_directories(unit-tests PUBLIC "./")
-target_link_libraries(unit-tests PUBLIC recursion essentials adt Catch2::Catch2)
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+add_executable(Google_Tests_run adt_tests.cpp)
+target_link_libraries(Google_Tests_run gtest gtest_main adt)

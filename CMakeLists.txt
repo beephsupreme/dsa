@@ -13,14 +13,14 @@ include(FetchContent)
 add_git_submodule(external/json)
 
 FetchContent_Declare(
-    Catch2
-    GIT_REPOSITORY https://github.com/catchorg/Catch2
-    GIT_TAG v2.13.9
-    GIT_SHALLOW TRUE)
-FetchContent_MakeAvailable(Catch2)
+        googletest
+        GIT_REPOSITORY https://github.com/google/googletest
+        GIT_TAG v1.14.x
+        GIT_SHALLOW TRUE
+)
+FetchContent_MakeAvailable(googletest)
 
 add_subdirectory(src)
 add_subdirectory(app)
 add_subdirectory(tests)
 add_subdirectory(configured)
-add_subdirectory(boost_tests)
