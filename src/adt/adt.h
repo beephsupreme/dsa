@@ -60,7 +60,7 @@ class Array {
 
   /**
  * @details Get the element at position 'index'
- * @param element
+ * @param index
  * @returns The value located at 'index'
  */
   [[nodiscard]] int32_t get(int32_t index) const;
@@ -68,12 +68,13 @@ class Array {
   /**
 * @details Set the value at position 'index' to 'element'
 * @param element
+* @param index
 */
   void set(int32_t element, int32_t index);
 
   /**
 * @details Remove the element at position 'index'
-* @param element
+* @param index
 * @returns The value located at 'index'
 */
   int32_t remove(int32_t index);

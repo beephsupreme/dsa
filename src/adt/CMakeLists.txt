@@ -1,5 +1,11 @@
-add_library(adt STATIC adt.cpp)
-target_include_directories(adt PUBLIC
+set(LIBRARY_NAME adt)
+set(LIBRARY_SOURCES "adt.cc")
+set(LIBRARY_HEADERS "adt.h")
+set(LIBRARY_INCLUDES
         "./"
-        "${CMAKE_BINARY_DIR}/configured_files/include"
-)
+        "${CMAKE_BINARY_DIR}/configured_files/include")
+
+add_library(${LIBRARY_NAME} STATIC
+        ${LIBRARY_SOURCES}
+        ${LIBRARY_HEADER})
+target_include_directories(${LIBRARY_NAME} PUBLIC ${LIBRARY_INCLUDES})
