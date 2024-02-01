@@ -9,6 +9,7 @@ set(CMAKE_CXX_EXTENSIONS        OFF)
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
 include(AddGitSubmodule)
 include(FetchContent)
+include(Docs)
 
 FetchContent_Declare(
         nlohmann_json
