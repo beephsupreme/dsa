@@ -7,8 +7,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS        OFF)
 
 option(ENABLE_TESTING "Enable a Unit Testing Build" ON)
-option(ENABLE_WARNINGS "Enable to add warnings to a target." ON)
-option(ENABLE_WARNINGS_AS_ERRORS "Enable to treat warnings as errors." ON)
+option(ENABLE_WARNINGS "Enable to add warnings to a target." OFF)
+option(ENABLE_WARNINGS_AS_ERRORS "Enable to treat warnings as errors." OFF)
+option(ENABLE_SANITIZE_ADDR "Enable to detect memory errors." OFF)
+option(ENABLE_SANITIZE_UNDEF "Enable to detect/trace undefined behavior errors." OFF)
 
 set(LIBRARY_NAME adt)
 set(EXECUTABLE_NAME app)
@@ -22,6 +24,10 @@ if(ENABLE_WARNINGS)
     include(Warnings)
 endif()
 
+if(ENABLE_SANITIZE_ADDR OR ENABLE_SANITIZE_UNDEF)
+    include(Sanitizers)
+    add_sanitizer_flags()
+endif()
 
 FetchContent_Declare(
         nlohmann_json

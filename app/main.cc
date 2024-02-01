@@ -9,6 +9,9 @@ using namespace std;
 
 int main() {
 
+  int x[2];
+  x[2] = 1337;
+
   std::string s = fmt::format("{} {}", project_name, project_version);
   cout << s << endl;
 
