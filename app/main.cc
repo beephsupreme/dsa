@@ -8,6 +8,9 @@
 using namespace std;
 
 int main() {
+
+  int i;
+
   cout << project_name << " " << project_version << endl;
 
   cout << "JSON: "
