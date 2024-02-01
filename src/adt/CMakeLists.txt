@@ -10,7 +10,6 @@ target_include_directories(${LIBRARY_NAME} PUBLIC ${LIBRARY_INCLUDES})
 if (ENABLE_WARNINGS)
     target_set_warnings(
             ${LIBRARY_NAME}
-            ON
-            OFF
-    )
-endif ()
+            ${ENABLE_WARNINGS}
+            ${ENABLE_WARNINGS_AS_ERRORS})
+endif()
