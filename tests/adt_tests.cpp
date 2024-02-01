@@ -212,3 +212,31 @@ TEST_F(AdtTest, isSorted) {
   ASSERT_EQ(arr_random.isSorted(), true);
 }
 
+TEST_F(AdtTest, FindSorted) {
+  for (auto i{0}; i < 10; i++) {
+    ASSERT_EQ(arr_increasing.find(i + 1), i);
+  }
+  ASSERT_EQ(arr_increasing.find(11), -1);
+}
+
+TEST_F(AdtTest, FindUnSorted) {
+  ASSERT_EQ(arr_random.find(8), 0);
+  ASSERT_EQ(arr_random.find(2), 1);
+  ASSERT_EQ(arr_random.find(7), 2);
+  ASSERT_EQ(arr_random.find(1), 3);
+  ASSERT_EQ(arr_random.find(3), 4);
+  ASSERT_EQ(arr_random.find(4), 5);
+  ASSERT_EQ(arr_random.find(5), 6);
+  ASSERT_EQ(arr_random.find(9), 7);
+  ASSERT_EQ(arr_random.find(6), 8);
+  ASSERT_EQ(arr_random.find(10), 9);
+  ASSERT_EQ(arr_increasing.find(11), -1);
+}
+
+TEST_F(AdtTest, Reverse) {
+  arr_decreasing.reverse();
+  for (auto i{0}; i < 10; i++) {
+    EXPECT_EQ(arr_increasing.get(i), arr_decreasing.get(i));
+  }
+}
+
