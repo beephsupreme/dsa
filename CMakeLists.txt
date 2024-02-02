@@ -29,6 +29,7 @@ if(ENABLE_SANITIZE_ADDR OR ENABLE_SANITIZE_UNDEF)
     add_sanitizer_flags()
 endif()
 
+
 FetchContent_Declare(
         nlohmann_json
         GIT_REPOSITORY https://github.com/nlohmann/json
@@ -43,6 +44,8 @@ FetchContent_Declare(
         GIT_SHALLOW TRUE)
 FetchContent_MakeAvailable(fmt)
 
+set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+set(SPDLOG_FMT_EXTERNAL ON)
 FetchContent_Declare(
         spdlog
         GIT_REPOSITORY https://github.com/gabime/spdlog
