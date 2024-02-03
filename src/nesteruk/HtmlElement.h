@@ -3,12 +3,15 @@
 #include <iostream>
 #include <sstream>
 
-struct HtmlBuilder;
+class HtmlBuilder;
 
-struct HtmlElement {
+class HtmlElement {
+private:
     std::string name, text;
-    std::vector<HtmlElement> elements;
     const size_t indent_size = 2;
+    std::vector<HtmlElement> elements;
+public:
+    friend class HtmlBuilder;
     HtmlElement() = default;
     HtmlElement(std::string name, std::string text);
     [[nodiscard]] std::string str(size_t indent = 0) const;
