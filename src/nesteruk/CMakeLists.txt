@@ -1,6 +1,11 @@
-set(LIBRARY_NAME adt)
-set(LIBRARY_SOURCES "adt.cpp")
-set(LIBRARY_HEADERS "adt.h")
+set(LIBRARY_NAME nesteruk)
+set(LIBRARY_SOURCES "HtmlElement.cpp"
+                    "HtmlBuilder.cpp"
+        HtmlBuilder.h)
+
+set(LIBRARY_HEADERS "HtmlElement.h"
+                    "HtmlBuilder.h")
+
 set(LIBRARY_INCLUDES "./" "${CMAKE_BINARY_DIR}/configured_files/include")
 
 add_library(${LIBRARY_NAME} STATIC
