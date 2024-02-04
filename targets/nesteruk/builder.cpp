@@ -1,12 +1,12 @@
 #include <iostream>
-#include <Person.h>
-#include <PersonBuilder.h>
-#include <PersonAddressBuilder.h>
-#include <PersonJobBuilder.h>
+#include "Person.h"
+#include "PersonBuilder.h"
+#include "PersonAddressBuilder.h"
+#include "PersonJobBuilder.h"
 
 using namespace std;
 
-void person_builder()
+int main()
 {
     Person p = Person::create()
         .lives().at("123 London Road")
@@ -17,4 +17,5 @@ void person_builder()
         .earning(10e6);
 
     cout <<  p << endl;
+    return EXIT_SUCCESS;
 }
