@@ -41,7 +41,7 @@ Array::Array(Array& arr)
     if (!A) {
         throw std::out_of_range("Array::Array(size) failed allocation.");
     }
-    for (auto i{ 0 }; i < length; i++) {
+    for (auto i{0}; i < length; i++) {
         A[i] = arr.A[i];
     }
 }
@@ -140,7 +140,7 @@ int32_t Array::remove(const int32_t index)
         throw std::out_of_range("Array::remove(index) out of range.");
     }
     const int32_t element = A[index];
-    for (auto i{ index }; i < length; i++) {
+    for (auto i{index}; i < length; i++) {
         A[i] = A[i + 1];
     }
     length--;
@@ -150,7 +150,7 @@ int32_t Array::remove(const int32_t index)
 int32_t Array::min() const
 {
     auto x = A[0];
-    for (auto i{ 0 }; i < length; i++) {
+    for (auto i{0}; i < length; i++) {
         if (A[i] < x) {
             x = A[i];
         }
@@ -161,7 +161,7 @@ int32_t Array::min() const
 int32_t Array::max() const
 {
     auto x = A[0];
-    for (auto i{ 0 }; i < length; i++) {
+    for (auto i{0}; i < length; i++) {
         if (A[i] > x) {
             x = A[i];
         }
@@ -173,7 +173,7 @@ void Array::reverse()
 {
     try {
         const auto q = new int32_t[size];
-        for (auto i{ 0 }, j{ length - 1 }; i < length; i++, j--) {
+        for (auto i{0}, j{length - 1}; i < length; i++, j--) {
             q[i] = A[j];
         }
         delete[] A;
@@ -186,8 +186,8 @@ void Array::reverse()
 
 int32_t Array::sum()
 {
-    auto sum{ 0 };
-    for (auto i{ 0 }; i < length; i++) {
+    auto sum{0};
+    for (auto i{0}; i < length; i++) {
         sum += A[i];
     }
     return sum;
@@ -203,15 +203,15 @@ double Array::avg()
 
 void Array::sort()
 {
-    for (int32_t i{ 0 }; i < length; i++) {
+    for (int32_t i{0}; i < length; i++) {
         int32_t min = i;
-        for (int32_t j{ i + 1 }; j < length; j++) {
+        for (int32_t j{i + 1}; j < length; j++) {
             if (A[j] < A[min]) {
                 min = j;
             }
         }
         if (min != i) {
-            int32_t temp{ A[i] };
+            int32_t temp{A[i]};
             A[i] = A[min];
             A[min] = temp;
         }
@@ -220,7 +220,7 @@ void Array::sort()
 
 bool Array::isSorted()
 {
-    for (auto i{ 0 }; i < length - 1; i++) {
+    for (auto i{0}; i < length - 1; i++) {
         if (A[i] > A[i + 1]) {
             return false;
         }
@@ -230,7 +230,7 @@ bool Array::isSorted()
 
 int32_t Array::linear_search(int32_t element)
 {
-    for (int32_t i{ 0 }; i < length; i++) {
+    for (int32_t i{0}; i < length; i++) {
         if (A[i] == element) {
             return i;
         }
@@ -240,7 +240,7 @@ int32_t Array::linear_search(int32_t element)
 
 int32_t Array::binary_search(int32_t element)
 {
-    int32_t l{ 0 }, h{ length - 1 }, mid;
+    int32_t l{0}, h{length - 1}, mid;
     while (l <= h) {
         mid = (l + h) / 2;
         if (element == A[mid]) {

@@ -1,5 +1,5 @@
 set(EXECUTABLE_NAME app)
-set(EXE_SOURCES "main.cpp")
+set(EXE_SOURCES adt_driver.cpp)
 set(EXE_INCLUDES "./")
 
 add_executable(app ${EXE_SOURCES})

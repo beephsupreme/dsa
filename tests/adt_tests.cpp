@@ -8,10 +8,10 @@ protected:
     Array arr_random;
     void SetUp() override
     {
-        for (auto i{ 1 }; i < 11; i++) {
+        for (auto i{1}; i < 11; i++) {
             arr_increasing.append(i);
         }
-        for (auto i{ 10 }; i > 0; i--) {
+        for (auto i{10}; i > 0; i--) {
             arr_decreasing.append(i);
         }
         arr_random.append(8);  // 0
@@ -43,10 +43,10 @@ TEST_F(AdtTest, GetInitalLength)
 
 TEST_F(AdtTest, CheckInitalValues)
 {
-    for (auto i{ 0 }; i < 10; i++) {
+    for (auto i{0}; i < 10; i++) {
         EXPECT_EQ(arr_increasing.get(i), i + 1);
     }
-    for (auto i{ 0 }; i < 10; i++) {
+    for (auto i{0}; i < 10; i++) {
         EXPECT_EQ(arr_decreasing.get(i), 10 - i);
     }
     ASSERT_EQ(arr_random.get(0), 8);
@@ -69,10 +69,10 @@ TEST_F(AdtTest, Append)
 
 TEST_F(AdtTest, Set)
 {
-    for (auto i{ 0 }; i < 10; i++) {
+    for (auto i{0}; i < 10; i++) {
         arr_increasing.set(2 * (i + 1), i);
     }
-    for (auto i{ 0 }; i < 10; i++) {
+    for (auto i{0}; i < 10; i++) {
         EXPECT_EQ(arr_increasing.get(i), 2 * (i + 1));
     }
 }
@@ -80,7 +80,7 @@ TEST_F(AdtTest, Set)
 TEST_F(AdtTest, ConstructToSize)
 {
     Array arr(1E6);
-    for (auto i{ 0 }; i < 5E5; i++) {
+    for (auto i{0}; i < 5E5; i++) {
         arr.append(i);
     }
     EXPECT_EQ(arr.getLength(), 5E5);
@@ -101,10 +101,10 @@ TEST_F(AdtTest, CopyConstructor)
     EXPECT_EQ(arr_i.getLength(), 10);
     EXPECT_EQ(arr_d.getLength(), 10);
     EXPECT_EQ(arr_r.getLength(), 10);
-    for (auto i{ 0 }; i < 10; i++) {
+    for (auto i{0}; i < 10; i++) {
         EXPECT_EQ(arr_i.get(i), i + 1);
     }
-    for (auto i{ 0 }; i < 10; i++) {
+    for (auto i{0}; i < 10; i++) {
         EXPECT_EQ(arr_d.get(i), 10 - i);
     }
     ASSERT_EQ(arr_r.get(0), 8);
@@ -124,7 +124,7 @@ TEST_F(AdtTest, InsertFirst)
     arr_increasing.insert(42, 0);
     ASSERT_EQ(arr_increasing.getLength(), 11);
     ASSERT_EQ(arr_increasing.get(0), 42);
-    for (auto i{ 1 }; i < 11; i++) {
+    for (auto i{1}; i < 11; i++) {
         ASSERT_EQ(arr_increasing.get(i), i);
     }
 }
@@ -133,7 +133,7 @@ TEST_F(AdtTest, RemoveFirst)
 {
     arr_increasing.remove(0);
     ASSERT_EQ(arr_increasing.getLength(), 9);
-    for (auto i{ 0 }; i < 9; i++) {
+    for (auto i{0}; i < 9; i++) {
         ASSERT_EQ(arr_increasing.get(i), i + 2);
     }
 }
@@ -142,7 +142,7 @@ TEST_F(AdtTest, InsertLast)
 {
     arr_increasing.insert(42, 10);
     ASSERT_EQ(arr_increasing.getLength(), 11);
-    for (auto i{ 0 }; i < 10; i++) {
+    for (auto i{0}; i < 10; i++) {
         ASSERT_EQ(arr_increasing.get(i), i + 1);
     }
     ASSERT_EQ(arr_increasing.get(10), 42);
@@ -152,7 +152,7 @@ TEST_F(AdtTest, RemoveLast)
 {
     arr_increasing.remove(9);
     ASSERT_EQ(arr_increasing.getLength(), 9);
-    for (auto i{ 0 }; i < 9; i++) {
+    for (auto i{0}; i < 9; i++) {
         ASSERT_EQ(arr_increasing.get(i), i + 1);
     }
 }
@@ -161,7 +161,7 @@ TEST_F(AdtTest, InsertMid)
 {
     arr_increasing.insert(42, 5);
     EXPECT_EQ(arr_increasing.getLength(), 11);
-    for (auto i{ 0 }, j{ 1 }; i < 10; i++, j++) {
+    for (auto i{0}, j{1}; i < 10; i++, j++) {
         if (i == 5) {
             j--;
             continue;
@@ -175,7 +175,7 @@ TEST_F(AdtTest, RemoveMid)
 {
     arr_increasing.remove(5);
     EXPECT_EQ(arr_increasing.getLength(), 9);
-    for (auto i{ 0 }, j{ 1 }; i < 8; i++, j++) {
+    for (auto i{0}, j{1}; i < 8; i++, j++) {
         if (i == 5) j++;
         ASSERT_EQ(arr_increasing.get(i), j);
     }
@@ -214,7 +214,7 @@ TEST_F(AdtTest, Sort)
     arr_increasing.sort();
     arr_decreasing.sort();
     arr_random.sort();
-    for (auto i{ 0 }; i < 10; i++) {
+    for (auto i{0}; i < 10; i++) {
         EXPECT_EQ(arr_increasing.get(i), i + 1);
         EXPECT_EQ(arr_decreasing.get(i), i + 1);
         EXPECT_EQ(arr_random.get(i), i + 1);
@@ -234,7 +234,7 @@ TEST_F(AdtTest, isSorted)
 
 TEST_F(AdtTest, FindSorted)
 {
-    for (auto i{ 0 }; i < 10; i++) {
+    for (auto i{0}; i < 10; i++) {
         ASSERT_EQ(arr_increasing.find(i + 1), i);
     }
     ASSERT_EQ(arr_increasing.find(11), -1);
@@ -258,7 +258,7 @@ TEST_F(AdtTest, FindUnSorted)
 TEST_F(AdtTest, Reverse)
 {
     arr_decreasing.reverse();
-    for (auto i{ 0 }; i < 10; i++) {
+    for (auto i{0}; i < 10; i++) {
         EXPECT_EQ(arr_increasing.get(i), arr_decreasing.get(i));
     }
 }
