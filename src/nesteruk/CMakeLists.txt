@@ -1,10 +1,17 @@
 set(LIBRARY_NAME nesteruk)
-set(LIBRARY_SOURCES "HtmlElement.cpp"
-                    "HtmlBuilder.cpp"
-        HtmlBuilder.h)
+set(LIBRARY_SOURCES
+        HtmlElement.cpp
+        HtmlBuilder.cpp
+        Person.cpp
+        PersonBuilder.cpp
+        PersonAddressBuilder.h
+        PersonJobBuilder.h)
 
-set(LIBRARY_HEADERS "HtmlElement.h"
-                    "HtmlBuilder.h")
+set(LIBRARY_HEADERS
+        HtmlElement.h
+        HtmlBuilder.h
+        Person.h
+        PersonBuilder.h)
 
 set(LIBRARY_INCLUDES "./" "${CMAKE_BINARY_DIR}/configured_files/include")
 

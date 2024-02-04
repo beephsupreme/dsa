@@ -1,14 +1,22 @@
 #include <iostream>
-#include <HtmlElement.h>
-#include <HtmlBuilder.h>
+#include <Person.h>
+#include <PersonBuilder.h>
+#include <PersonAddressBuilder.h>
+#include <PersonJobBuilder.h>
 
 using namespace std;
 
 int main()
 {
-    HtmlElement ele = HtmlElement::build("ul")
-        .add_child("li", "hello")
-        .add_child("li", "world");
-    cout << ele.str() << endl;
+    Person p = Person::create()
+        .lives().at("123 London Road")
+                .with_postcode("SW1 1GB")
+                .in("London")
+        .works().at("PragmaSoft")
+        .as_a("Consultant")
+        .earning(10e6);
+
+    cout <<  p << endl;
+
     return EXIT_SUCCESS;
 }
