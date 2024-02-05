@@ -1,21 +1,3 @@
-set(EXECUTABLE_NAME patterns)
-set(EXE_SOURCES abstract_factory.cpp)
-
-set(EXE_INCLUDES "./")
-
-set(TARGET_LIBRARIES
-        nesteruk
-        fmt::fmt
-        spdlog::spdlog)
-
-add_executable(${EXECUTABLE_NAME} ${EXE_SOURCES})
-target_include_directories(${EXECUTABLE_NAME} PUBLIC ${EXE_INCLUDES})
-
-target_link_libraries(${EXECUTABLE_NAME} PUBLIC ${TARGET_LIBRARIES})
-
-if (ENABLE_WARNINGS)
-    target_set_warnings(
-            ${EXECUTABLE_NAME}
-            ${ENABLE_WARNINGS}
-            ${ENABLE_WARNINGS_AS_ERRORS})
-endif()
+add_subdirectory(abstract_factory)
+add_subdirectory(factory)
+add_subdirectory(builder)
