@@ -1,5 +1,9 @@
 set(EXECUTABLE_NAME prototype)
-set(EXE_SOURCES prototype.cpp)
+
+set(EXE_SOURCES
+        prototype.cpp
+        Address.h
+        Contact.h)
 
 set(BOOST_REQUIRED_COMPONENTS
         filesystem)
@@ -13,7 +17,6 @@ find_package(
         REQUIRED COMPONENTS ${BOOST_REQUIRED_COMPONENTS})
 
 set(TARGET_LIBRARIES
-        nesteruk
         Boost::filesystem)
 
 add_executable(${EXECUTABLE_NAME} ${EXE_SOURCES})

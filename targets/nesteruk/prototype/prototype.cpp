@@ -7,102 +7,22 @@
 #include <boost/archive/binary_iarchive.hpp>
 #include <boost/archive/binary_oarchive.hpp>
 #include <utility>
+#include <Address.h>
+#include <Contact.h>
 
 using namespace std;
 
-int main()
-{
 
-    return EXIT_SUCCESS;
+int main() {
+  Address addr{"123 Main St", "Anaheim", 42};
+  cout << addr << endl;
+  Contact cnt {"Mike", &addr};
+  cout << cnt << endl;
+
+  return EXIT_SUCCESS;
 }
 
-struct Address {
-    string street;
-    string city;
-    int suite;
 
-    Address(string street, string city, const int suite)
-        : street{std::move(street)},
-          city{std::move(city)},
-          suite{suite}
-    {
-    }
-
-    friend ostream& operator<<(ostream& os, const Address& obj)
-    {
-        return os
-            << "street: " << obj.street
-            << " city: " << obj.city
-            << " suite: " << obj.suite;
-    }
-};
-
-struct Contact {
-    string name;
-    Address* address;
-
-    Contact& operator=(const Contact& other)
-    {
-        if (this == &other)
-            return *this;
-        name = other.name;
-        address = other.address;
-        return *this;
-    }
-
-    Contact() : name(nullptr), address(nullptr)
-    {
-    } // required for serialization
-
-    Contact(string name, Address* address)
-        : name{name}, address{address}
-    {
-        //this->address = new Address{ *address };
-    }
-
-    Contact(const Contact& other)
-        : name{other.name}
-    //, address{ new Address{*other.address} }
-    {
-        address = new Address(
-            other.address->street,
-            other.address->city,
-            other.address->suite
-        );
-    }
-
-private:
-    friend class boost::serialization::access;
-
-    template<class archive>
-    void save(archive& ar, const unsigned version) const
-    {
-        ar << name;
-        ar << address;
-    }
-
-    template<class archive>
-    void load(archive& ar, const unsigned version)
-    {
-        ar >> name;
-        ar >> address;
-    }
-
-    BOOST_SERIALIZATION_SPLIT_MEMBER()
-
-public:
-    ~Contact()
-    {
-        delete address;
-    }
-
-    friend ostream& operator<<(ostream& os, const Contact& obj)
-    {
-        return os
-            << "name: " << obj.name
-            << " works at " << *obj.address; // note the star here
-    }
-};
 //
 //struct EmployeeFactory
 //{
@@ -134,7 +54,7 @@ public:
 //Contact EmployeeFactory::aux{ "", new Address{ "123B East Dr", "London", 0 } };
 
 //int main_3423()
-{
+//{
 // this is tedious
 // Contact john{ "John Doe", new Address{"123 East Dr", "London"} };
 // Contact jane{ "Jane Doe", new Address{"123 East Dr", "London"} };
