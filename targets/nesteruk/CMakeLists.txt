@@ -1,5 +1,5 @@
 set(EXECUTABLE_NAME patterns)
-set(EXE_SOURCES builder.cpp)
+set(EXE_SOURCES abstract_factory.cpp)
 
 set(EXE_INCLUDES "./")
 

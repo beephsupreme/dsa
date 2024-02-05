@@ -5,13 +5,20 @@ set(LIBRARY_SOURCES
         Person.cpp
         PersonBuilder.cpp
         PersonAddressBuilder.h
-        PersonJobBuilder.h)
+        PersonJobBuilder.h
+        Point.cpp
+        HotDrink.h
+        HotDrinkFactory.h
+        DrinkFactory.h
+        CoffeeFactory.h
+        TeaFactory.h)
 
 set(LIBRARY_HEADERS
         HtmlElement.h
         HtmlBuilder.h
         Person.h
-        PersonBuilder.h)
+        PersonBuilder.h
+        Point.h)
 
 set(LIBRARY_INCLUDES "./" "${CMAKE_BINARY_DIR}/configured_files/include")
 
