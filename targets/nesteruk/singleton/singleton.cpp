@@ -63,8 +63,8 @@ class DummyDatabase : public Database {
 };
 
 struct ConfigurableRecordFinder {
-  Database& db;
-  explicit ConfigurableRecordFinder(Database& db) : db(db) {}
+  Database &db;
+  explicit ConfigurableRecordFinder(Database &db) : db(db) {}
   int total_population(const vector<string> &names) {
     int result{0};
     for (auto &name : names) {
@@ -85,7 +85,7 @@ TEST(RecordFinderTests, DependentPopulationTest) {
   ConfigurableRecordFinder rf{db};
   vector<string> names{"alpha", "beta", "gamma"};
   int tp = rf.total_population(names);
-  EXPECT_EQ(1+2+3, tp);
+  EXPECT_EQ(1 + 2 + 3, tp);
 }
 
 int main(int ac, char *av[]) {
