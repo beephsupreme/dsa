@@ -9,14 +9,17 @@ set(BOOST_REQUIRED_COMPONENTS
 
 set(BOOST_MIN_VERSION 1.84.0)
 
-set(EXE_INCLUDES "./")
-
+set(EXE_INCLUDES "./"
+                gtest
+                gtest_main)
 find_package(
         Boost ${BOOST_MIN_VERSION}
         REQUIRED COMPONENTS ${BOOST_REQUIRED_COMPONENTS})
 
 set(TARGET_LIBRARIES
-        Boost::filesystem)
+        Boost::filesystem
+        gtest
+        gtest_main)
 
 add_executable(${EXECUTABLE_NAME} ${EXE_SOURCES})
 target_include_directories(${EXECUTABLE_NAME} PUBLIC ${EXE_INCLUDES})
