@@ -1,6 +1,6 @@
 #pragma once
 
-#include<ostream>
+#include <ostream>
 #include <string>
 
 struct Address {
@@ -16,8 +16,7 @@ struct Address {
 
   friend std::ostream &operator<<(std::ostream &os, const Address &obj) {
     return os
-        << "street: " << obj.street
-        << " city: " << obj.city
-        << " suite: " << obj.suite;
+        << obj.street
+        << " #" << obj.suite << ", " << obj.city;
   }
 };

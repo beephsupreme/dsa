@@ -3,7 +3,8 @@ set(EXECUTABLE_NAME prototype)
 set(EXE_SOURCES
         prototype.cpp
         Address.h
-        Contact.h)
+        Contact.h
+        EmployeeFactory.h)
 
 set(BOOST_REQUIRED_COMPONENTS
         filesystem)
