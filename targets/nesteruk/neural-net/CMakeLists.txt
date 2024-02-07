@@ -1,7 +1,7 @@
 set(EXECUTABLE_NAME neural-net)
 
 set(EXE_SOURCES
-        nueral-net.cpp
+        neural-net.cpp
 )
 
 set(BOOST_REQUIRED_COMPONENTS

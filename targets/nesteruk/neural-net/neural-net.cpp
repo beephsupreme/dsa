@@ -3,10 +3,22 @@
 
 using namespace std;
 
-template<typename Self>
-struct SomeNeurons;
+struct Neuron;
 
-struct Neuron : SomeNeurons {
+template<typename Self>
+struct SomeNeurons {
+    template<typename T>
+    void connect_to(T &other) {
+        for (Neuron &from : *static_cast<Self *>(this)) {
+            for (Neuron &to : other) {
+                from.out.push_back(&to);
+                to.in.push_back(&from);
+            }
+        }
+    }
+};
+
+struct Neuron : SomeNeurons<Neuron> {
     vector<Neuron *> in;
     vector<Neuron *> out;
     unsigned int id;
@@ -36,7 +48,7 @@ struct Neuron : SomeNeurons {
     }
 };
 
-struct NeuronLayer : vector<Neuron> {
+struct NeuronLayer : vector<Neuron>, SomeNeurons<NeuronLayer> {
     explicit NeuronLayer(int count) {
         while (count-- > 0) {
             emplace_back(Neuron{});
@@ -51,19 +63,6 @@ struct NeuronLayer : vector<Neuron> {
     }
 };
 
-//CRTP
-template<typename Self>
-struct SomeNeurons {
-    template<typename T>
-    void connect_to(T &other) {
-        for (Neuron &from : *static_cast<Self *>(this)) {
-            for (Neuron &to : other) {
-                from.out.push_back(&to);
-                to.in.push_back(&from);
-            }
-        }
-    }
-};
 
 int main() {
 
