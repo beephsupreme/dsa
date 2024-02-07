@@ -13,4 +13,4 @@ if (ENABLE_WARNINGS)
             ${LIBRARY_NAME}
             ${ENABLE_WARNINGS}
             ${ENABLE_WARNINGS_AS_ERRORS})
-endif()
+endif ()
