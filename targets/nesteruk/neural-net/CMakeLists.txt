@@ -2,6 +2,9 @@ set(EXECUTABLE_NAME neural-net)
 
 set(EXE_SOURCES
         neural-net.cpp
+        SomeNeurons.h
+        Neuron.h
+        NeuronLayer.h
 )
 
 set(BOOST_REQUIRED_COMPONENTS
